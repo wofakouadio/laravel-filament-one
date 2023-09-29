@@ -15,11 +15,13 @@ class Product extends Model
         'brand_id', 'name', 'slug', 'sku', 'image', 'description', 'quantity', 'price', 'is_visible', 'is_featured', 'type', 'published_at'
     ];
 
-    public function brand():BelongsTo{
+    protected $primaryKey = 'id';
+
+    public function brand(): BelongsTo{
         return $this->belongsTo(Brand::class);
     }
 
-    public function categories():BelongsToMany{
+    public function categories(): BelongsToMany{
         return $this->belongsToMany(Category::class)->withTimestamps();
 }
 
